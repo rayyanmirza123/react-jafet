@@ -5,7 +5,7 @@ import {Routes, Route} from 'react-router-dom';
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import ProSideBar from "./components/SideBar";
 import Dashboard from "./screens/dashboard/Dashboard";
-import AddUser from "./screens/users/AddUser";
+import AddStudent from "./screens/students/AddStudent";
 import AddUserFacialData from "./screens/facial_recognition/AddUserFacialData";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
               <TopBar/>
               <Routes>
                 <Route path="/"  element={<Dashboard/>}/>
-                <Route path="/add_user" element={<AddUser/>}/>
+                <Route path="/add_user" element={<AddStudent/>}/>
                 <Route path="/addfrdata" element={<AddUserFacialData/>}/>
               </Routes>
             </main>

@@ -12,6 +12,8 @@ import AssessmentIcon from '@mui/icons-material/Assessment';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import Person4Icon from '@mui/icons-material/Person4';
 import HandymanIcon from '@mui/icons-material/Handyman';
+import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
+import FaceRetouchingNaturalIcon from '@mui/icons-material/FaceRetouchingNatural';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -130,8 +132,22 @@ const ProSideBar = () => {
                   setSelected={setSelected}
                 />
                 </SubMenu>
-                
                 <Divider/>
+                <SubMenu
+                  label='Facial Recognition'
+                  icon={<InsertEmoticonIcon/>}
+                  selected={selected}
+                  setSelected={setSelected}
+                >
+                  <Item
+                    title='Add Facial Data'
+                    to='/addfrdata'
+                    icon={<FaceRetouchingNaturalIcon/>}
+                    selected={selected}
+                    setSelected={setSelected}
+                    />
+                </SubMenu>
+                <Divider/>                
                 <Item
                   title='Admins'
                   to='/admins'

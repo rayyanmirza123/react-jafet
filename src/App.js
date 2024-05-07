@@ -6,6 +6,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import ProSideBar from "./components/SideBar";
 import Dashboard from "./screens/dashboard/Dashboard";
 import AddUser from "./screens/users/AddUser";
+import AddUserFacialData from "./screens/facial_recognition/AddUserFacialData";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -21,6 +22,7 @@ function App() {
               <Routes>
                 <Route path="/"  element={<Dashboard/>}/>
                 <Route path="/add_user" element={<AddUser/>}/>
+                <Route path="/addfrdata" element={<AddUserFacialData/>}/>
               </Routes>
             </main>
           </div>

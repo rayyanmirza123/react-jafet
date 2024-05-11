@@ -14,6 +14,7 @@ import Person4Icon from '@mui/icons-material/Person4';
 import HandymanIcon from '@mui/icons-material/Handyman';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import FaceRetouchingNaturalIcon from '@mui/icons-material/FaceRetouchingNatural';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -148,13 +149,20 @@ const ProSideBar = () => {
                     />
                 </SubMenu>
                 <Divider/>                
-                <Item
-                  title='Admins'
-                  to='/admins'
+                <SubMenu
+                  label='Teachers/Admins'
                   icon={<AdminPanelSettingsIcon/>}
                   selected={selected}
                   setSelected={setSelected}
-                />
+                >
+                  <Item
+                    title='Add Teacher'
+                    to='/add_teacher'
+                    icon={<HistoryEduIcon/>}
+                    selected={selected}
+                    setSelected={setSelected}
+                    />
+                </SubMenu>
                 <Divider/>
                 <Item
                   title='Classes'

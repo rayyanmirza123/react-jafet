@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Grid, Typography, Paper } from '@mui/material';
+import {Box } from "@mui/material";
+import Header from "../../components/Header";
 
 const TeacherForm = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +26,11 @@ const TeacherForm = () => {
   };
 
   return (
-    <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '100vh' }}>
+    <Box  m='5px'>
+      <Box display='flex' justifyContent='space-between'  alignItems='center'>
+        <Header title='Add Teacher' subtitle='Add Teacher'/>
+      </Box>
+    <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '40vh' }}>
       <Grid item xs={10} sm={8} md={6}>
         <Paper elevation={3} style={{ padding: '20px' }}>
           <Typography variant="h4" align="center" gutterBottom>
@@ -84,6 +90,7 @@ const TeacherForm = () => {
         </Paper>
       </Grid>
     </Grid>
+    </Box>
   );
 };
 

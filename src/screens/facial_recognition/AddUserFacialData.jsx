@@ -22,11 +22,11 @@ const AddUserFacialData = () => {
   }
   return (
    <Box  m='20px'>
-     <Box display='flex' justifyContent='space-between'  alignItems='center'>
+     {/* <Box display='flex' justifyContent='space-between'  alignItems='center'>
        <Header title='Add Facial Data' subtitle='Add Facial Data'/>
-     </Box>
+     </Box> */}
      <Grid container spacing={2}>
-      <Grid xs={8}>
+      <Grid xs={4}>
        <Camera
         onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
        />

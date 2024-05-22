@@ -112,22 +112,8 @@ const ProSideBar = () => {
                   setSelected={setSelected}
                 >
                   <Item
-                  title="Add User"
+                  title="Add Student"
                   to="/add_user"
-                  icon={<Person4Icon />}
-                  selected={selected}
-                  setSelected={setSelected}
-                />
-                <Item
-                  title="Update User"
-                  to="/update_user"
-                  icon={<Person4Icon />}
-                  selected={selected}
-                  setSelected={setSelected}
-                />
-                <Item
-                  title="Remove User"
-                  to="/remove_user"
                   icon={<Person4Icon />}
                   selected={selected}
                   setSelected={setSelected}

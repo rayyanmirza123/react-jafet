@@ -1,134 +1,122 @@
 import React, { useState } from 'react';
-import { TextField, Button, Grid, Typography, Paper } from '@mui/material';
+import { Grid, TextField, Button, Box } from '@mui/material';
+import Camera from 'react-html5-camera-photo';
+import 'react-html5-camera-photo/build/css/index.css';
 
-const StudentForm = () => {
+function AddStudent() {
   const [formData, setFormData] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    mobileno: '',
-    semester: '',
-    rollno: '',
-    captured_image: null,
+      firstname: '',
+      lastname: '',
+      email: '',
+      mobileno: '',
+      semester: '',
+      photo: null, // Store the captured photo here
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const [images, setImages] = useState([]);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setFormData((prevData) => ({
-      ...prevData,
-      captured_image: file,
-    }));
+  const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    console.log(formData);
+      e.preventDefault();
+      // Handle form submission
+      console.log(formData);
+  };
+
+  const handleTakePhoto = (dataUri) => {
+    if (images.length < 7) {
+        setImages([...images, dataUri]);
+    } else {
+        alert('You can only capture up to 7 images.');
+    }
   };
 
   return (
-    <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '100vh' }}>
-      <Grid item xs={10} sm={8} md={6}>
-        <Paper elevation={3} style={{ padding: '20px' }}>
-          <Typography variant="h4" align="center" gutterBottom>
-            Student Form
-          </Typography>
+    <Box m='20px'>
+      <Box sx={{ flexGrow: 1 }}>
           <form onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label="First Name"
-                  name="firstname"
-                  value={formData.firstname}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label="Last Name"
-                  name="lastname"
-                  value={formData.lastname}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label="Email"
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label="Mobile No"
-                  name="mobileno"
-                  value={formData.mobileno}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label="Semester"
-                  name="semester"
-                  value={formData.semester}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label="Roll No"
-                  name="rollno"
-                  value={formData.rollno}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <input
-                  accept="image/*"
-                  style={{ display: 'none' }}
-                  id="captured-image"
-                  type="file"
-                  onChange={handleImageChange}
-                />
-                <label htmlFor="captured-image">
-                  <Button variant="contained" component="span">
-                    Upload Image
-                  </Button>
-                </label>
-              </Grid>
-              <Grid item xs={12}>
-                <Button type="submit" variant="contained" color="primary" fullWidth>
-                  Submit
-                </Button>
-              </Grid>
-            </Grid>
-          </form>
-        </Paper>
-      </Grid>
-    </Grid>
-  );
-};
+              <Grid container spacing={2}>
+                  {/* First Part */}
+                  <Grid item xs={12} md={6}>
+                      <Grid container spacing={2}>
+                          <Grid item xs={12}>
+                              <TextField
+                                  label="First Name"
+                                  name="firstname"
+                                  value={formData.firstname}
+                                  onChange={handleChange}
+                                  fullWidth
+                              />
+                          </Grid>
+                          <Grid item xs={12}>
+                              <TextField
+                                  label="Last Name"
+                                  name="lastname"
+                                  value={formData.lastname}
+                                  onChange={handleChange}
+                                  fullWidth
+                              />
+                          </Grid>
+                          <Grid item xs={12}>
+                              <TextField
+                                  label="Email"
+                                  name="email"
+                                  value={formData.email}
+                                  onChange={handleChange}
+                                  fullWidth
+                              />
+                          </Grid>
+                          <Grid item xs={12}>
+                              <TextField
+                                  label="Mobile No"
+                                  name="mobileno"
+                                  value={formData.mobileno}
+                                  onChange={handleChange}
+                                  fullWidth
+                              />
+                          </Grid>
+                          <Grid item xs={12}>
+                              <TextField
+                                  label="Semester"
+                                  name="semester"
+                                  value={formData.semester}
+                                  onChange={handleChange}
+                                  fullWidth
+                              />
+                          </Grid>
+                      </Grid>
+                  </Grid>
 
-export default StudentForm;
+                  {/* Right Part */}
+                  <Grid item xs={12} md={6}>
+                      <div>
+                          {images.map((image, index) => (
+                              <img key={index} src={image} alt={`Captured ${index}`} style={{ width: '20%', marginBottom: '2px' }} />
+                          ))}
+                      </div>
+                  </Grid>
+
+                  {/* Camera */}
+                  <Grid item xs={12} md={6}>
+                      <Camera
+                        onTakePhoto={handleTakePhoto}
+                      />
+                  </Grid>
+
+                  {/* Submit Button */}
+                  <Grid item xs={12}>
+                      <Button type="submit" variant="contained" color="primary">
+                          Submit
+                      </Button>
+                  </Grid>
+              </Grid>
+          </form>
+      </Box>
+    </Box>
+  );
+}
+
+export default AddStudent;

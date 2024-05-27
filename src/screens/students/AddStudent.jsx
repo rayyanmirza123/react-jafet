@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Grid, TextField, Button, Box , Typography, Paper} from '@mui/material';
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
+import axios from 'axios';
 
 function AddStudent() {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ function AddStudent() {
       mobileno: '',
       semester: '',
       course: '',
-      photo: null, // Store the captured photo here
+      images: [], // Store the captured photo here
   });
 
   const [images, setImages] = useState([]);
@@ -25,11 +26,13 @@ function AddStudent() {
       e.preventDefault();
       // Handle form submission
       console.log(formData);
+      axios.post('http://localhost:8080/add_student', formData);
   };
 
   const handleTakePhoto = (dataUri) => {
     if (images.length < 7) {
         setImages([...images, dataUri]);
+        formData.images = images;
     } else {
         alert('You can only capture up to 7 images.');
     }

@@ -1,25 +1,30 @@
-import {Box, CardHeader, Input, InputLabel, NativeSelect, Select,MenuItem , useTheme, Grid } from "@mui/material";
+import {Box,  Button , useTheme, Grid } from "@mui/material";
 import { tokens } from "../../themes/theme";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import { styled } from '@mui/material/styles';
-import Header from "../../components/Header";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Camera from 'react-html5-camera-photo';
-import Paper from '@mui/material/Paper';
 import 'react-html5-camera-photo/build/css/index.css';
+import axios from "axios";
 
 const AddUserFacialData = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-   const [images, setImages] = useState([]);
+  var [images, setImages] = useState([]);
 
   function handleTakePhoto (dataUri) {
+   images = []; 
    images.push(dataUri);
    setImages(images);
    console.log(images);
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission
+    axios.post('http://localhost:8080/fr', {'images':images});
+  };
+
+
   return (
    <Box  m='20px'>
      {/* <Box display='flex' justifyContent='space-between'  alignItems='center'>
@@ -40,6 +45,13 @@ const AddUserFacialData = () => {
           </Grid>)
         })
        }
+       <form onSubmit={handleSubmit}>
+        <Grid item xs={12}>
+            <Button type="submit" variant="contained" color="primary">
+                Submit
+            </Button>
+        </Grid>
+       </form>
       </Grid>
      </Grid>
    </Box>

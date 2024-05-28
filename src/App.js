@@ -8,6 +8,7 @@ import Dashboard from "./screens/dashboard/Dashboard";
 import AddStudent from "./screens/students/AddStudent";
 import AddTeacher from "./screens/teachers/AddTeacher";
 import AddUserFacialData from "./screens/facial_recognition/AddUserFacialData";
+import Reports from "./screens/reports/Reports";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/add_user" element={<AddStudent/>}/>
                 <Route path="/addfrdata" element={<AddUserFacialData/>}/>
                 <Route path="/add_teacher" element={<AddTeacher/>}/>
+                <Route path="/reports" element={<Reports/>}/>
               </Routes>
             </main>
           </div>

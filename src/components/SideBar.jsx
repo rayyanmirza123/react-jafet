@@ -134,50 +134,11 @@ const ProSideBar = () => {
                     setSelected={setSelected}
                     />
                 </SubMenu>
-                <Divider/>                
-                <SubMenu
-                  label='Teachers/Admins'
-                  icon={<AdminPanelSettingsIcon/>}
-                  selected={selected}
-                  setSelected={setSelected}
-                >
-                  <Item
-                    title='Add Teacher'
-                    to='/add_teacher'
-                    icon={<HistoryEduIcon/>}
-                    selected={selected}
-                    setSelected={setSelected}
-                    />
-                </SubMenu>
-                <Divider/>
-                <Item
-                  title='Classes'
-                  to='/classes'
-                  icon={<SchoolIcon/>}
-                  selected={selected}
-                  setSelected={setSelected}
-                />
-                <Divider/>
-                <Item
-                  title='Time-Tables'
-                  to='/timetables'
-                  icon={<ScheduleIcon/>}
-                  selected={selected}
-                  setSelected={setSelected}
-                />
                 <Divider/>
                 <Item
                   title='Reports'
                   to='/reports'
                   icon={<AssessmentIcon/>}
-                  selected={selected}
-                  setSelected={setSelected}
-                />
-                <Divider/>
-                <Item
-                  title='Tools'
-                  to='/tools'
-                  icon={<HandymanIcon/>}
                   selected={selected}
                   setSelected={setSelected}
                 />

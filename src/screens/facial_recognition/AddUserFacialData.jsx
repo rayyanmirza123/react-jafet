@@ -21,7 +21,9 @@ const AddUserFacialData = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission
-    axios.post('http://localhost:8080/fr', {'images':images});
+    axios.post('http://localhost:8080/fr', {'images':images}).then(function(resp){
+      
+    });
   };
 
 

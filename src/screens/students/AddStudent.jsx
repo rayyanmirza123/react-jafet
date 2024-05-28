@@ -6,10 +6,10 @@ import axios from 'axios';
 
 function AddStudent() {
   const [formData, setFormData] = useState({
-      firstname: '',
-      lastname: '',
-      email: '',
-      mobileno: '',
+      firstName: '',
+      lastName: '',
+      emailId: '',
+      phoneNumber: '',
       semester: '',
       course: '',
       images: [], // Store the captured photo here
@@ -26,7 +26,10 @@ function AddStudent() {
       e.preventDefault();
       // Handle form submission
       console.log(formData);
-      axios.post('http://localhost:8080/add_student', formData);
+      axios.post('http://localhost:8080/add_student', formData).then(function(resp){
+        alert(resp['responseMessage']);
+      });
+
   };
 
   const handleTakePhoto = (dataUri) => {
@@ -54,8 +57,8 @@ function AddStudent() {
                                 <Grid item xs={12}>
                                     <TextField
                                         label="First Name"
-                                        name="firstname"
-                                        value={formData.firstname}
+                                        name="firstName"
+                                        value={formData.firstName}
                                         onChange={handleChange}
                                         fullWidth
                                     />
@@ -63,8 +66,8 @@ function AddStudent() {
                                 <Grid item xs={12}>
                                     <TextField
                                         label="Last Name"
-                                        name="lastname"
-                                        value={formData.lastname}
+                                        name="lastName"
+                                        value={formData.lastName}
                                         onChange={handleChange}
                                         fullWidth
                                     />
@@ -72,8 +75,8 @@ function AddStudent() {
                                 <Grid item xs={12}>
                                     <TextField
                                         label="Email"
-                                        name="email"
-                                        value={formData.email}
+                                        name="emailId"
+                                        value={formData.emailId}
                                         onChange={handleChange}
                                         fullWidth
                                     />
@@ -81,8 +84,8 @@ function AddStudent() {
                                 <Grid item xs={12}>
                                     <TextField
                                         label="Mobile No"
-                                        name="mobileno"
-                                        value={formData.mobileno}
+                                        name="phoneNumber"
+                                        value={formData.phoneNumber}
                                         onChange={handleChange}
                                         fullWidth
                                     />

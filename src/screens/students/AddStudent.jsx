@@ -12,10 +12,10 @@ function AddStudent() {
       phoneNumber: '',
       semester: '',
       course: '',
-      images: [], // Store the captured photo here
+      image: '', // Store the captured photo here
   });
 
-  const [images, setImages] = useState([]);
+  const [image, setImage] = useState('');
 
   const handleChange = (e) => {
       const { name, value } = e.target;
@@ -33,12 +33,8 @@ function AddStudent() {
   };
 
   const handleTakePhoto = (dataUri) => {
-    if (images.length < 7) {
-        setImages([...images, dataUri]);
-        formData.images = images;
-    } else {
-        alert('You can only capture up to 7 images.');
-    }
+    setImage(dataUri);
+    formData['image'] = dataUri;
   };
 
   return (
@@ -114,9 +110,7 @@ function AddStudent() {
                         {/* Right Part */}
                         <Grid item xs={12} md={6}>
                             <div>
-                                {images.map((image, index) => (
-                                    <img key={index} src={image} alt={`Captured ${index}`} style={{ width: '20%', marginBottom: '2px' }} />
-                                ))}
+                                <img src={image} alt='1' style={{ width: '20%', marginBottom: '2px' }} />
                             </div>
                         </Grid>
 
